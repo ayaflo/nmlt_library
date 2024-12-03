@@ -1,0 +1,9 @@
+123;Naruto: The Official Character Data Book;Masashi Kishimoto;Viz Media;2012;manga;210000;3
+369;Demon Slayer: Kimetsu no Yaiba, Vol. 1;Koyoharu Gotouge;Viz Media;2016;manga;264000;6
+412;The Notebook;Nicholas Sparks;Grand Central;1996;romance;299000;1
+613;Me Before You;Jojo Moyes;Penguin Books;2012;romance;320000;3
+981;Your Name;Makoto Shinkai;Yen Press;2016;romance;300000;3
+651;The Catcher in the Rye;J.D. Salinger;Little, Brown;1951;fiction;421000;5
+546;The Alchemist;Paulo Coelho;HarperOne;1988;fiction;279000;6
+314;The Gene: An Intimate History;Siddhartha Mukherjee;Scribner;2016;science;369000;2
+424;A Brief History of Time;Stephen Hawking;Bantam Books;1988;science;442000;3
