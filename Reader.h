@@ -13,6 +13,7 @@ int search_name_reader(const char name[],const char reader[100][9][100]);
 
 int total_reader(const char reader[100][9][100]);
 int total_reader_gender(const char gender[],const char reader[100][9][100]);
+void set_expiry_date(char reader[100][9][100]);
 
 void case1_view_all_readers(const char data_reader[100][9][100]);
 void case2_add_reader(char data_reader[100][9][100]);

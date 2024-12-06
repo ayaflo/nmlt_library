@@ -1,7 +1,6 @@
 #include "Reader.h"
 #include <iomanip>
 #include "Function.h"
-//#include <cstdio>
 #include <iostream>
 
 void edit_reader(char find_id[],char reader[100][9][100],char id[],char name[],char cmnd[],char birthdate[],char gender[],char email[],char address[],char issue_date[],char expiry_date[]) {
@@ -155,7 +154,6 @@ void remove_reader(char find_id[],char reader[100][9][100]) {
 			}
 		}
 		if (check==true) {
-			//output infor about the reader
 			break;
 		}
 		location++;
@@ -248,7 +246,6 @@ int search_cmnd_reader(const char cmnd[],const char reader[100][9][100]) {
 			}
 		}
 		if (check==true) {
-			//output infor about the reader
 			return i;
 		}
 		i++;
@@ -315,7 +312,6 @@ void display_reader(const char reader[9][100]) {
 	std::cout<<std::endl;
 }
 void display_all_reader(const char reader[100][9][100]) {
-	//std::cout<<reader[8][0][0]<<std::endl;
 	//print out the header
 	std::cout<<std::left<<std::setw(10)<<"ID"
 	<<std::setw(25)<<"Name"
@@ -332,7 +328,6 @@ void display_all_reader(const char reader[100][9][100]) {
 		display_reader(reader[i]);
 		i++;
 	}
-	//std::cout<<reader[0][0][0]<<std::endl;
 	std::cout << std::setfill('-') << std::setw(220) << "-" << std::setfill(' ') << std::endl;
 
 }
@@ -371,8 +366,9 @@ void case2_add_reader(char data_reader[100][9][100]) {
 	std::cin.getline(address,100);
 	std::cout<<"Enter ISSUE Date: ";
 	std::cin.getline(issue_date,100);
-	std::cout<<"Enter Expiry Date: ";
-	std::cin.getline(expiry_date,100);
+	int day,month,year;
+	parseDate(issue_date,day,month,year);
+	formatDate(day,month,year+4,expiry_date);
 	add_reader(data_reader,id,name,cmnd,birthdate,gender,email,address,issue_date,expiry_date);
 
 	std::cout<<"Enter 0 to return main menu...\n";
@@ -408,8 +404,9 @@ void case3_edit_reader(char data_reader[100][9][100]) {
 	std::cin.getline(address,100);
 	std::cout<<"Enter new ISSUE Date: ";
 	std::cin.getline(issue_date,100);
-	std::cout<<"Enter new Expiry Date: ";
-	std::cin.getline(expiry_date,100);
+	int day,month,year;
+	parseDate(issue_date,day,month,year);
+	formatDate(day,month,year+4,expiry_date);
 	edit_reader(find_id,data_reader,id,name,cmnd,birthdate,gender,email,address,issue_date,expiry_date);
 
 	std::cout<<"Enter 0 to return main menu...\n";

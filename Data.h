@@ -3,7 +3,7 @@
 #define DATA_H
 #include <fstream>
 #include <iostream>
-
+#include "Function.h"
 inline void read_data_reader(char filename[],char reader[100][9][100]) {
 	std::ifstream dataFile(filename);
 	if (!dataFile.is_open()) {
@@ -20,8 +20,9 @@ inline void read_data_reader(char filename[],char reader[100][9][100]) {
 			dataFile.getline(reader[i][4],100,';'); //get gender
 			dataFile.getline(reader[i][5],100,';'); //get email
 			dataFile.getline(reader[i][6],100,';'); //get address
-			dataFile.getline(reader[i][7],100,';'); //get issue_date
-			dataFile.getline(reader[i][8],100,'\n'); //get expiry_date
+			dataFile.getline(reader[i][7],100,'\n'); //get issue_date
+			// dataFile.getline(reader[i][8],100,'\n'); //get expiry_date
+			set_expiry_date(reader,i);
 			i++;
 		}
 	}

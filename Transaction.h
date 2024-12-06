@@ -13,6 +13,7 @@ int total_late_returned_book(char transaction[100][6][100]);
 
 void case1_borrow_transaction(char data_transaction[100][6][100]);
 void case2_return_transaction(char data_transaction[100][6][100],char data_book[100][8][100]);
+void case3_view_transaction(char data_transaction[100][6][100]);
 
 void case5_statistics(char data_transaction[100][6][100]);
 void case6_statistics(char data_transaction[100][6][100]);

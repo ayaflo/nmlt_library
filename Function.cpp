@@ -22,19 +22,18 @@ void clearConsole() {
 #endif
 }
 void print_logo() {
-	std::cout <<"\e[1;33m"//"\e[1;36m"<<
-	 "             ╔════════════════════════════════════════════════════════════════════════════════════════════════════╗" << "\n"
-   <<"             ║██╗  ██╗ ██████╗███╗   ███╗██╗   ██╗███████╗    ██╗     ██╗██████╗ ██████╗  █████╗ ██████╗ ██╗   ██╗║" << "\n"
-   <<"             ║██║  ██║██╔════╝████╗ ████║██║   ██║██╔════╝    ██║     ██║██╔══██╗██╔══██╗██╔══██╗██╔══██╗╚██╗ ██╔╝║" << "\n"
-   <<"             ║███████║██║     ██╔████╔██║██║   ██║███████╗    ██║     ██║██████╔╝██████╔╝███████║██████╔╝ ╚████╔╝ ║" << "\n"
-   <<"             ║██╔══██║██║     ██║╚██╔╝██║██║   ██║╚════██║    ██║     ██║██╔══██╗██╔══██╗██╔══██║██╔══██╗  ╚██╔╝  ║" << "\n"
-   <<"             ║██║  ██║╚██████╗██║ ╚═╝ ██║╚██████╔╝███████║    ███████╗██║██████╔╝██║  ██║██║  ██║██║  ██║   ██║   ║" << "\n"
-   <<"             ║╚═╝  ╚═╝ ╚═════╝╚═╝     ╚═╝ ╚═════╝ ╚══════╝    ╚══════╝╚═╝╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝   ║" << "\n"
-   <<"             ╚════════════════════════════════════════════════════════════════════════════════════════════════════╝";
-	//std::cout<<"\033[10;10H";
-	std::cout<<"\e[0;37m"<<std::endl;
+	std::cout<<" _   _  ____ __  __ _   _ ____    _     _ _                          \n"
+			 <<"| | | |/ ___|  \\/  | | | / ___|  | |   (_) |__  _ __ __ _ _ __ _   _ \n"
+			 <<"| |_| | |   | |\\/| | | | \\___ \\  | |   | | '_ \\| '__/ _` | '__| | | |\n"
+			 <<"|  _  | |___| |  | | |_| |___) | | |___| | |_) | | | (_| | |  | |_| |\n"
+			 <<"|_| |_|\\____|_|  |_|\\___/|____/  |_____|_|_.__/|_|  \\__,_|_|   \\__, |\n"
+			 <<"                                                               |___/ \n";
 }
-
+void reset_char_array(char array[],int size) {
+	for (int i = 0; i < size; ++i) {
+		array[i] = '\0';
+	}
+}
 bool compare_char_array(const char array1[], const char array2[]) {
 	int i = 0;
 	// Compare characters one by one until the null terminator
@@ -60,7 +59,6 @@ int charArrayToNumber(const char str[]) {
 void intToCharArray(int number, char result[]) {
 	int index = 0;
 	int temp = number;
-
 	// Count the number of digits
 	do {
 		index++;
@@ -79,6 +77,35 @@ void intToCharArray(int number, char result[]) {
 		result[--index] = (number % 10) + '0'; // Convert digit to character
 		number /= 10;
 	}
+}
+
+//formatDate to dd/mm/yyyy
+void formatDate(int day, int month, int year, char result[]) {
+	int temp;
+	int index = 0;
+	if (day >= 10) {
+		temp = day / 10;
+		result[index++] = '0' + temp;
+		day -= temp * 10;
+	}
+	result[index++] = '0' + day;
+	result[index++] = '/';
+	if (month >= 10) {
+		temp = month / 10;
+		result[index++] = '0' + temp;
+		month -= temp * 10;
+	}
+	result[index++] = '0' + month;
+	result[index++] = '/';
+	temp = year;
+	int divisor = 1000;
+	while (divisor > 0) {
+		int digit = temp / divisor;
+		result[index++] = '0' + digit;
+		temp %= divisor;
+		divisor /= 10;
+	}
+	result[index] = '\0';
 }
 
 // Helper function to count the number of days in a month
@@ -143,4 +170,11 @@ int check(char arr1[], char arr2[]) {
 	int total2 = totalDays(day2, month2, year2);
 	// Return the absolute difference
 	return (total1>total2)?(total1 - total2):(total2-total1);
+}
+void set_expiry_date(char reader[100][9][100],int i) {
+	int day,month,year;
+	parseDate(reader[i][7],day,month,year);
+	year+=4;
+	char result[100];
+	formatDate(day,month,year,reader[i][8]);
 }

@@ -143,7 +143,6 @@ void remove_book(const char find_ISBN[],char book[100][8][100]) {
 			}
 		}
 		if (check==true) {
-			//output infor about the book
 			break;
 		}
 		location++;
@@ -296,7 +295,6 @@ void display_book(const char book[8][100]) {
 	std::cout<<std::endl;
 }
 void display_all_book(const char book[100][8][100]) {
-	//std::cout<<book[8][0][0]<<std::endl;
 	//print out the header
 	std::cout<<std::left<<std::setw(10)<<"ISBN"
 	<<std::setw(80)<<"Title"
@@ -312,7 +310,6 @@ void display_all_book(const char book[100][8][100]) {
 		display_book(book[i]);
 		i++;
 	}
-	//std::cout<<book[0][0][0]<<std::endl;
 	std::cout << std::setfill('-') << std::setw(220) << "-" << std::setfill(' ') << std::endl;
 }
 void case1_view_all_books(const char data_book[100][8][100]) {
@@ -360,13 +357,12 @@ void case2_add_book(char data_book[100][8][100]) {
 void case3_edit_book(char data_book[100][8][100]) {
 	clearConsole();
 	display_all_book(data_book);
-	std::cout << "Editing Reader\n"
+	std::cout << "Editing Book\n"
 		  <<"Enter edited book's ISBN: ";
 	char find_ISBN[100];
 	std::cin.ignore(2,'\n');
 	std::cin.getline(find_ISBN,100,'\n');
 	char ISBN[100],title[100],author[100],publisher[100],year[100],category[100],price[100],numberOfBooks[100];
-	//std::cin.ignore();
 	std::cout<<"Enter new ISBN: ";
 	std::cin.getline(ISBN,100);
 	std::cout<<"Enter new Title: ";
@@ -383,9 +379,7 @@ void case3_edit_book(char data_book[100][8][100]) {
 	std::cin.getline(price,100);
 	std::cout<<"Enter new Number of Books: ";
 	std::cin.getline(numberOfBooks,100);
-
 	edit_book(find_ISBN,data_book,ISBN,title,author,publisher,year,category,price,numberOfBooks);
-
 	std::cout<<"Enter 0 to return main menu...\n";
 	int choice;
 	std::cin>>choice;
@@ -473,7 +467,6 @@ void case6_search_book(char data_book[100][8][100]) {
 		std::cin>>choice;
 	}
 }
-
 void case1_statistic(char data_book[100][8][100]) {
 	clearConsole();
 	display_all_book(data_book);
