@@ -3,15 +3,15 @@
 #include "Function.h"
 #include <iostream>
 
-void edit_reader(char find_id[],char reader[100][9][100],char id[],char name[],char cmnd[],char birthdate[],char gender[],char email[],char address[],char issue_date[],char expiry_date[]) {
+void edit_reader(char find_id[],data_reader reader[],char id[],char name[],char cmnd[],char birthdate[],char gender[],char email[],char address[],char issue_date[],char expiry_date[]) {
 	unsigned int i=0,location=0;
 	//find the reader who need to be edited
 	bool check=false;
-	while (reader[location][0][0]!='\0') {
+	while (reader[location].id[0]!='\0') {
 		check=true;
 		// compare two char arrays
-		for (int j = 0; reader[location][0][j] != '\0' || find_id[j] != '\0'; ++j) {
-			if (reader[location][0][j] != find_id[j]) {
+		for (int j = 0; reader[location].id[j] != '\0' || find_id[j] != '\0'; ++j) {
+			if (reader[location].id[j] != find_id[j]) {
 				check=false;
 				break;
 			}
@@ -21,134 +21,134 @@ void edit_reader(char find_id[],char reader[100][9][100],char id[],char name[],c
 			break;
 		}
 		location++;
-		if (reader[location][0][0]=='\0') {
+		if (reader[location].id[0]=='\0') {
 			std::cout<<"Error: Cannot find id of reader"<<std::endl;
 		}
 	}
-	if (reader[location][0][0]=='\0')
+	if (reader[location].id[0]=='\0')
 		return;
 	//edit reader's information
 	while (id[i]!='\0') {
-		reader[location][0][i]=id[i];
+		reader[location].id[i]=id[i];
 		i++;
 	}
-	reader[location][0][i]='\0';
+	reader[location].id[i]='\0';
 	i=0;
 	while (name[i]!='\0') {
-		reader[location][1][i]=name[i];
+		reader[location].name[i]=name[i];
 		i++;
 	}
-	reader[location][1][i]='\0';
+	reader[location].name[i]='\0';
 	i=0;
 	while (cmnd[i]!='\0') {
-		reader[location][2][i]=cmnd[i];
+		reader[location].cmnd[i]=cmnd[i];
 		i++;
 	}
-	reader[location][2][i]='\0';
+	reader[location].cmnd[i]='\0';
 	i=0;
 	while (birthdate[i]!='\0') {
-		reader[location][3][i]=birthdate[i];
+		reader[location].birthdate[i]=birthdate[i];
 		i++;
 	}
-	reader[location][3][i]='\0';
+	reader[location].birthdate[i]='\0';
 	i=0;
 	while (gender[i]!='\0') {
-		reader[location][4][i]=gender[i];
+		reader[location].gender[i]=gender[i];
 		i++;
 	}
-	reader[location][4][i]='\0';
+	reader[location].gender[i]='\0';
 	i=0;
 	while (email[i]!='\0') {
-		reader[location][5][i]=email[i];
+		reader[location].email[i]=email[i];
 		i++;
 	}
-	reader[location][5][i]='\0';
+	reader[location].email[i]='\0';
 	i=0;
 	while (address[i]!='\0') {
-		reader[location][6][i]=address[i];
+		reader[location].address[i]=address[i];
 		i++;
 	}
-	reader[location][6][i]='\0';
+	reader[location].address[i]='\0';
 	i=0;
 	while (issue_date[i]!='\0') {
-		reader[location][7][i]=issue_date[i];
+		reader[location].issue_date[i]=issue_date[i];
 		i++;
 	}
-	reader[location][7][i]='\0';
+	reader[location].issue_date[i]='\0';
 	i=0;
 	while (expiry_date[i]!='\0') {
-		reader[location][8][i]=expiry_date[i];
+		reader[location].expiry_date[i]=expiry_date[i];
 		i++;
 	}
-	reader[location][8][i]='\0';
+	reader[location].expiry_date[i]='\0';
 	std::cout << "Edit reader successfully!\n";
 }
-void add_reader(char reader[100][9][100],char id[],char name[],char cmnd[],char birthdate[],char gender[],char email[],char address[],char issue_date[],char expiry_date[]) {
+void add_reader(data_reader reader[],char id[],char name[],char cmnd[],char birthdate[],char gender[],char email[],char address[],char issue_date[],char expiry_date[]) {
 	unsigned int i=0,location=-1;
 	do {
 		location++;
-		if (reader[location][0][0]=='\0') {
+		if (reader[location].id[0]=='\0') {
 			//edit reader's information
 			i=0;
 			while (id[i]!='\0') {
-				reader[location][0][i]=id[i];
+				reader[location].id[i]=id[i];
 				i++;
 			}
 			i=0;
 			while (name[i]!='\0') {
-				reader[location][1][i]=name[i];
+				reader[location].name[i]=name[i];
 				i++;
 			}
 			i=0;
 			while (cmnd[i]!='\0') {
-				reader[location][2][i]=cmnd[i];
+				reader[location].cmnd[i]=cmnd[i];
 				i++;
 			}
 			i=0;
 			while (birthdate[i]!='\0') {
-				reader[location][3][i]=birthdate[i];
+				reader[location].birthdate[i]=birthdate[i];
 				i++;
 			}
 			i=0;
 			while (gender[i]!='\0') {
-				reader[location][4][i]=gender[i];
+				reader[location].gender[i]=gender[i];
 				i++;
 			}
 			i=0;
 			while (email[i]!='\0' ) {
-				reader[location][5][i]=email[i];
+				reader[location].email[i]=email[i];
 				i++;
 			}
 			i=0;
 			while (address[i]!='\0') {
-				reader[location][6][i]=address[i];
+				reader[location].address[i]=address[i];
 				i++;
 			}
 			i=0;
 			while (issue_date[i]!='\0') {
-				reader[location][7][i]=issue_date[i];
+				reader[location].issue_date[i]=issue_date[i];
 				i++;
 			}
 			i=0;
 			while (expiry_date[i]!='\0') {
-				reader[location][8][i]=expiry_date[i];
+				reader[location].expiry_date[i]=expiry_date[i];
 				i++;
 			}
 			break;
 		}
 
-	}while (reader[location][0][0]!='\0' && location<99);
+	}while (reader[location].id[0]!='\0' && location<99);
 	std::cout << "Add reader successfully!\n";
 }
-void remove_reader(char find_id[],char reader[100][9][100]) {
+void remove_reader(char find_id[],data_reader reader[]) {
 	unsigned int i=0,location=0;
 	//find the reader who need to be removed
 	bool check=false;
-	while (reader[location][0][0]!='\0') {
+	while (reader[location].id[0]!='\0') {
 		check=true;
 		// compare two char arrays
-		for (int j = 0; reader[location][0][j] != '\0' || find_id[j] != '\0'; ++j) {
-			if (reader[location][0][j] != find_id[j]) {
+		for (int j = 0; reader[location].id[j] != '\0' || find_id[j] != '\0'; ++j) {
+			if (reader[location].id[j] != find_id[j]) {
 				check=false;
 				break;
 			}
@@ -157,90 +157,90 @@ void remove_reader(char find_id[],char reader[100][9][100]) {
 			break;
 		}
 		location++;
-		if (reader[location][0][0]=='\0') {
+		if (reader[location].id[0]=='\0') {
 			std::cout << "Error: Cannot find the id of reader!\n";
 			return;
 		}
 
 	}
-	while (reader[location+1][0][0]!='\0') {
+	while (reader[location+1].id[0]!='\0') {
 		//copy continous reader into current reader
 		i=0;
-		while (reader[location+1][0][i]!='\0') {
-			reader[location][0][i]=reader[location+1][0][i];
+		while (reader[location+1].id[i]!='\0') {
+			reader[location].id[i]=reader[location+1].id[i];
 			i++;
 		}
-		reader[location][0][i]='\0';
+		reader[location].id[i]='\0';
 		i=0;
-		while (reader[location+1][1][i]!='\0') {
-			reader[location][1][i]=reader[location+1][1][i];
+		while (reader[location+1].name[i]!='\0') {
+			reader[location].name[i]=reader[location+1].name[i];
 			i++;
 		}
-		reader[location][1][i]='\0';
+		reader[location].name[i]='\0';
 		i=0;
-		while (reader[location+1][2][i]!='\0') {
-			reader[location][2][i]=reader[location+1][2][i];
+		while (reader[location+1].cmnd[i]!='\0') {
+			reader[location].cmnd[i]=reader[location+1].cmnd[i];
 			i++;
 		}
-		reader[location][2][i]='\0';
+		reader[location].cmnd[i]='\0';
 		i=0;
-		while (reader[location+1][3][i]!='\0') {
-			reader[location][3][i]=reader[location+1][3][i];
+		while (reader[location+1].birthdate[i]!='\0') {
+			reader[location].birthdate[i]=reader[location+1].birthdate[i];
 			i++;
 		}
-		reader[location][3][i]='\0';
+		reader[location].birthdate[i]='\0';
 		i=0;
-		while (reader[location+1][4][i]!='\0') {
-			reader[location][4][i]=reader[location+1][4][i];
+		while (reader[location+1].gender[i]!='\0') {
+			reader[location].gender[i]=reader[location+1].gender[i];
 			i++;
 		}
-		reader[location][4][i]='\0';
+		reader[location].gender[i]='\0';
 		i=0;
-		while (reader[location+1][5][i]!='\0') {
-			reader[location][5][i]=reader[location+1][5][i];
+		while (reader[location+1].email[i]!='\0') {
+			reader[location].email[i]=reader[location+1].email[i];
 			i++;
 		}
-		reader[location][5][i]='\0';
+		reader[location].email[i]='\0';
 		i=0;
-		while (reader[location+1][6][i]!='\0') {
-			reader[location][6][i]=reader[location+1][6][i];
+		while (reader[location+1].address[i]!='\0') {
+			reader[location].address[i]=reader[location+1].address[i];
 			i++;
 		}
-		reader[location][6][i]='\0';
+		reader[location].address[i]='\0';
 		i=0;
-		while (reader[location+1][7][i]!='\0') {
-			reader[location][7][i]=reader[location+1][7][i];
+		while (reader[location+1].issue_date[i]!='\0') {
+			reader[location].issue_date[i]=reader[location+1].issue_date[i];
 			i++;
 		}
-		reader[location][7][i]='\0';
+		reader[location].issue_date[i]='\0';
 		i=0;
-		while (reader[location+1][8][i]!='\0') {
-			reader[location][8][i]=reader[location+1][8][i];
+		while (reader[location+1].expiry_date[i]!='\0') {
+			reader[location].expiry_date[i]=reader[location+1].expiry_date[i];
 			i++;
 		}
 
 		location++;
 	}
 	//delete the last reader
-	reader[location][0][0]='\0';
-	reader[location][1][0]='\0';
-	reader[location][2][0]='\0';
-	reader[location][3][0]='\0';
-	reader[location][4][0]='\0';
-	reader[location][5][0]='\0';
-	reader[location][6][0]='\0';
-	reader[location][7][0]='\0';
-	reader[location][8][0]='\0';
+	reader[location].id[0]='\0';
+	reader[location].name[0]='\0';
+	reader[location].cmnd[0]='\0';
+	reader[location].birthdate[0]='\0';
+	reader[location].gender[0]='\0';
+	reader[location].email[0]='\0';
+	reader[location].address[0]='\0';
+	reader[location].issue_date[0]='\0';
+	reader[location].expiry_date[0]='\0';
 	std::cout << "Delete Reader "<<find_id<<" successfully!\n";
 }
-int search_cmnd_reader(const char cmnd[],const char reader[100][9][100]) {
+int search_cmnd_reader(const char cmnd[],const data_reader reader[]) {
 	bool check=false;
 	int i=0;
-	while (reader[i][2][0]!='\0') {
+	while (reader[i].cmnd[0]!='\0') {
 		check=true;
 		// compare two char arrays
-		for (int j = 0; reader[i][2][j] != '\0' || cmnd[j] != '\0'; ++j) {
-			if (reader[i][2][j] != cmnd[j]) {
+		for (int j = 0; reader[i].cmnd[j] != '\0' || cmnd[j] != '\0'; ++j) {
+			if (reader[i].cmnd[j] != cmnd[j]) {
 				check=false;
 				break;
 			}
@@ -252,14 +252,14 @@ int search_cmnd_reader(const char cmnd[],const char reader[100][9][100]) {
 	}
 	return -1;
 }
-int search_name_reader(const char name[],const char reader[100][9][100]) {
+int search_name_reader(const char name[],const data_reader reader[]) {
 	bool check=false;
 	int i=0;
-	while (reader[i][1][0]!='\0') {
+	while (reader[i].name[0]!='\0') {
 		check=true;
 		// compare two char arrays
-		for (int j = 0; reader[i][1][j] != '\0' || name[j] != '\0'; ++j) {
-			if (reader[i][1][j] != name[j]) {
+		for (int j = 0; reader[i].name[j] != '\0' || name[j] != '\0'; ++j) {
+			if (reader[i].name[j] != name[j]) {
 				check=false;
 				break;
 			}
@@ -272,22 +272,22 @@ int search_name_reader(const char name[],const char reader[100][9][100]) {
 	}
 	return -1;
 }
-int total_reader(const char reader[100][9][100]) {
+int total_reader(const data_reader reader[]) {
 	int count=0;
-	while (reader[count][0][0]!='\0') {
+	while (reader[count].id[0]!='\0') {
 		count++;
 	}
 	return count;
 }
-int total_reader_gender(const char gender[],const char reader[100][9][100]) {
+int total_reader_gender(const char gender[],const data_reader reader[]) {
 	int count=0;
 	bool check=false;
 	int i=0;
-	while (reader[i][4][0]!='\0') {
+	while (reader[i].gender[0]!='\0') {
 		check=true;
 		// compare two char arrays
-		for (int j = 0; reader[i][4][j] != '\0' || gender[j] != '\0'; ++j) {
-			if (reader[i][4][j] != gender[j]) {
+		for (int j = 0; reader[i].gender[j] != '\0' || gender[j] != '\0'; ++j) {
+			if (reader[i].gender[j] != gender[j]) {
 				check=false;
 				break;
 			}
@@ -299,19 +299,19 @@ int total_reader_gender(const char gender[],const char reader[100][9][100]) {
 	}
 	return count;
 }
-void display_reader(const char reader[9][100]) {
-	std::cout<<std::setw(10)<<reader[0];
-	std::cout<<std::setw(25)<<reader[1];
-	std::cout<<std::setw(15)<<reader[2];
-	std::cout<<std::setw(15)<<reader[3];
-	std::cout<<std::setw(10)<<reader[4];
-	std::cout<<std::setw(40)<<reader[5];
-	std::cout<<std::setw(70)<<reader[6];
-	std::cout<<std::setw(15)<<reader[7];
-	std::cout<<std::setw(15)<<reader[8];
+void display_reader(const data_reader reader) {
+	std::cout<<std::setw(10)<<reader.id;
+	std::cout<<std::setw(25)<<reader.name;
+	std::cout<<std::setw(15)<<reader.cmnd;
+	std::cout<<std::setw(15)<<reader.birthdate;
+	std::cout<<std::setw(10)<<reader.gender;
+	std::cout<<std::setw(40)<<reader.email;
+	std::cout<<std::setw(70)<<reader.address;
+	std::cout<<std::setw(15)<<reader.issue_date;
+	std::cout<<std::setw(15)<<reader.expiry_date;
 	std::cout<<std::endl;
 }
-void display_all_reader(const char reader[100][9][100]) {
+void display_all_reader(const data_reader reader[]) {
 	//print out the header
 	std::cout<<std::left<<std::setw(10)<<"ID"
 	<<std::setw(25)<<"Name"
@@ -324,7 +324,7 @@ void display_all_reader(const char reader[100][9][100]) {
 	<<std::setw(15)<<"Expiry Date"<<std::endl;
 	std::cout << std::setfill('-') << std::setw(220) << "-" << std::setfill(' ') << std::endl;
 	int i=0;
-	while (reader[i][0][0]!='\0') {
+	while (reader[i].id[0]!='\0') {
 		display_reader(reader[i]);
 		i++;
 	}
@@ -332,10 +332,10 @@ void display_all_reader(const char reader[100][9][100]) {
 
 }
 
-void case1_view_all_readers(const char data_reader[100][9][100]) {
+void case1_view_all_readers(const data_reader reader[]) {
 	clearConsole();
 	std::cout << "Viewing readers...\n";
-	display_all_reader(data_reader);
+	display_all_reader(reader);
 	std::cout<<"Enter 0 to return main menu...\n";
 	int choice;
 	std::cin>>choice;
@@ -343,9 +343,9 @@ void case1_view_all_readers(const char data_reader[100][9][100]) {
 		std::cin>>choice;
 	}
 }
-void case2_add_reader(char data_reader[100][9][100]) {
+void case2_add_reader(data_reader reader[]) {
 	clearConsole();
-	display_all_reader(data_reader);
+	display_all_reader(reader);
 	std::cout << "Adding reader...\n";
 
 	char id[100],name[100],cmnd[100],birthdate[100],gender[100],email[100],address[100],issue_date[100],expiry_date[100];
@@ -369,7 +369,7 @@ void case2_add_reader(char data_reader[100][9][100]) {
 	int day,month,year;
 	parseDate(issue_date,day,month,year);
 	formatDate(day,month,year+4,expiry_date);
-	add_reader(data_reader,id,name,cmnd,birthdate,gender,email,address,issue_date,expiry_date);
+	add_reader(reader,id,name,cmnd,birthdate,gender,email,address,issue_date,expiry_date);
 
 	std::cout<<"Enter 0 to return main menu...\n";
 	int choice;
@@ -378,9 +378,9 @@ void case2_add_reader(char data_reader[100][9][100]) {
 		std::cin>>choice;
 	}
 }
-void case3_edit_reader(char data_reader[100][9][100]) {
+void case3_edit_reader(data_reader reader[]) {
 	clearConsole();
-	display_all_reader(data_reader);
+	display_all_reader(reader);
 	std::cout << "Editing Reader\n"
 		  <<"Enter edited reader's ID: ";
 	char find_id[100];
@@ -407,7 +407,7 @@ void case3_edit_reader(char data_reader[100][9][100]) {
 	int day,month,year;
 	parseDate(issue_date,day,month,year);
 	formatDate(day,month,year+4,expiry_date);
-	edit_reader(find_id,data_reader,id,name,cmnd,birthdate,gender,email,address,issue_date,expiry_date);
+	edit_reader(find_id,reader,id,name,cmnd,birthdate,gender,email,address,issue_date,expiry_date);
 
 	std::cout<<"Enter 0 to return main menu...\n";
 	int choice;
@@ -416,15 +416,15 @@ void case3_edit_reader(char data_reader[100][9][100]) {
 		std::cin>>choice;
 	}
 }
-void case4_delete_reader(char data_reader[100][9][100]) {
+void case4_delete_reader(data_reader reader[]) {
 	clearConsole();
-	display_all_reader(data_reader);
+	display_all_reader(reader);
 	std::cout << "Deleting Reader\n"
 			  <<"Enter deleted reader's ID: ";
 	char find_id[100];
 	std::cin.ignore(2,'\n');
 	std::cin.getline(find_id,100,'\n');
-	remove_reader(find_id,data_reader);
+	remove_reader(find_id,reader);
 
 	std::cout<<"Enter 0 to return main menu...\n";
 	int choice;
@@ -433,15 +433,15 @@ void case4_delete_reader(char data_reader[100][9][100]) {
 		std::cin>>choice;
 	}
 }
-void case5_search_reader(char data_reader[100][9][100]) {
+void case5_search_reader(data_reader reader[]) {
 	 clearConsole();
-	display_all_reader(data_reader);
+	display_all_reader(reader);
                 std::cout << "Searching reader by reader's CMND/CCCD...\n";
 				std::cout<<"Enter CMND/CCCD: ";
                 char find_cmnd[100];
                 std::cin.ignore(2,'\n');
                 std::cin.getline(find_cmnd,100,'\n');
-                int location=search_cmnd_reader(find_cmnd,data_reader);
+                int location=search_cmnd_reader(find_cmnd,reader);
                 if(location==-1)
                     std::cout<<"No such reader\n";
                 else {
@@ -456,7 +456,7 @@ void case5_search_reader(char data_reader[100][9][100]) {
 							<<std::setw(15)<<"Issue Date"
                 			<<std::setw(15)<<"Expiry Date"<<std::endl;
                     std::cout << std::setfill('-') << std::setw(220) << "-" << std::setfill(' ') << std::endl;
-                    display_reader(data_reader[location]);
+                    display_reader(reader[location]);
                 	std::cout << std::setfill('-') << std::setw(220) << "-" << std::setfill(' ') << std::endl;
                 }
 	std::cout<<"Enter 0 to return main menu...\n";
@@ -466,15 +466,15 @@ void case5_search_reader(char data_reader[100][9][100]) {
 		std::cin>>choice;
 	}
 }
-void case6_search_reader(char data_reader[100][9][100]) {
+void case6_search_reader(data_reader reader[]) {
 	clearConsole();
-	display_all_reader(data_reader);
+	display_all_reader(reader);
 	std::cout << "Searching reader by reader's name...\n";
 	std::cout<<"Enter reader's name: ";
 	char find_name[100];
 	std::cin.ignore(2,'\n');
 	std::cin.getline(find_name,100,'\n');
-	int location=search_name_reader(find_name,data_reader);
+	int location=search_name_reader(find_name,reader);
 	if(location==-1)
 		std::cout<<"No such reader\n";
 	else {
@@ -489,7 +489,7 @@ void case6_search_reader(char data_reader[100][9][100]) {
 				 <<std::setw(15)<<"Issue Date"
 				 <<std::setw(15)<<"Expiry Date"<<std::endl;
 		std::cout << std::setfill('-') << std::setw(220) << "-" << std::setfill(' ') << std::endl;
-		display_reader(data_reader[location]);
+		display_reader(reader[location]);
 		std::cout << std::setfill('-') << std::setw(220) << "-" << std::setfill(' ') << std::endl;
 	}
 	std::cout<<"Enter 0 to return main menu...\n";
@@ -500,10 +500,10 @@ void case6_search_reader(char data_reader[100][9][100]) {
 	}
 }
 
-void case3_statistic(char data_reader[100][9][100]) {
+void case3_statistic(data_reader reader[]) {
 	clearConsole();
-	display_all_reader(data_reader);
-	std::cout<<"Statistics on the number of readers: "<<total_reader(data_reader)<<std::endl;
+	display_all_reader(reader);
+	std::cout<<"Statistics on the number of readers: "<<total_reader(reader)<<std::endl;
 	std::cout << std::setfill('-') << std::setw(220) << "-" << std::setfill(' ') << std::endl;
 	std::cout<<"Enter 0 to return main menu...\n";
 	int choice;
@@ -512,17 +512,17 @@ void case3_statistic(char data_reader[100][9][100]) {
 		std::cin>>choice;
 	}
 }
-void case4_statistic(char data_reader[100][9][100]) {
+void case4_statistic(data_reader reader[]) {
 	clearConsole();
-	display_all_reader(data_reader);
+	display_all_reader(reader);
 	std::cout << "Statistics on readers by gender...\n";
 	std::cout<<"Enter gender: ";
 	char gender[100];
 	std::cin.ignore(2,'\n');
 	std::cin.getline(gender,100,'\n');
 	int i=0,count=0;
-	while (data_reader[i][4][0]!='\0') {
-		if (compare_char_array(data_reader[i][4],gender))
+	while (reader[i].gender[0]!='\0') {
+		if (compare_char_array(reader[i].gender,gender))
 			count++;
 		i++;
 	}

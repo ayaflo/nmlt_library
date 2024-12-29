@@ -1,4 +1,5 @@
 #include <iostream>
+#include "Data.h"
 void setColSizeConsole() {
 #ifdef _WIN32
 	// Windows-specific command using 'mode'
@@ -171,10 +172,10 @@ int check(char arr1[], char arr2[]) {
 	// Return the absolute difference
 	return (total1>total2)?(total1 - total2):(total2-total1);
 }
-void set_expiry_date(char reader[100][9][100],int i) {
+void set_expiry_date(data_reader &reader) {
 	int day,month,year;
-	parseDate(reader[i][7],day,month,year);
+	parseDate(reader.issue_date,day,month,year);
 	year+=4;
 	char result[100];
-	formatDate(day,month,year,reader[i][8]);
+	formatDate(day,month,year,reader.expiry_date);
 }

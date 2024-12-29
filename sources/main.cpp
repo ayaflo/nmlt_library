@@ -5,8 +5,8 @@
 #include "Book.h"
 #include "Transaction.h"
 #include "Function.h"
-void main_menu(char data_reader[100][9][100],char data_book[100][8][100],char data_transaction[100][6][100]);
-void menu_reader(char data_reader[100][9][100],char data_book[100][8][100],char data_transaction[100][6][100]) {
+bool main_menu(data_reader reader[],data_book book[],data_transaction transaction[]);
+void menu_reader(data_reader reader[],data_book book[],data_transaction transaction[]) {
     clearConsole();
     print_logo();
     std::cout<<"[Reader Management]\n"
@@ -21,39 +21,40 @@ void menu_reader(char data_reader[100][9][100],char data_book[100][8][100],char 
         std::cin >> choice;
         switch (choice) {
             case 1: {
-                case1_view_all_readers(data_reader);
+                case1_view_all_readers(reader);
             }
             break;
             case 2: {
-                case2_add_reader(data_reader);
+                case2_add_reader(reader);
             }
             break;
             case 3: {
-                case3_edit_reader(data_reader);
+                case3_edit_reader(reader);
             }
             break;
             case 4: {
-                case4_delete_reader(data_reader);
+                case4_delete_reader(reader);
             }
             break;
             case 5: {
-                case5_search_reader(data_reader);
+                case5_search_reader(reader);
             }
             break;
             case 6:{
-                case6_search_reader(data_reader);
+                case6_search_reader(reader);
             }
             break;
-            case 0:
+            case 0: {
                 std::cout << "Returning to main menu...\n";
-                 main_menu(data_reader,data_book,data_transaction);
+                bool i=main_menu(reader,book,transaction);
+            }
             break;
             default:
                 std::cout << "Invalid choice! Try again.\n";
         }
 
 }
-void menu_book(char data_reader[100][9][100],char data_book[100][8][100],char data_transaction[100][6][100]) {
+void menu_book(data_reader reader[],data_book book[],data_transaction transaction[]) {
     clearConsole();
     print_logo();
     std::cout<<"[Book Management]\n"
@@ -68,32 +69,33 @@ void menu_book(char data_reader[100][9][100],char data_book[100][8][100],char da
         std::cin >> choice;
         switch (choice) {
             case 1: {
-              case1_view_all_books(data_book);
+              case1_view_all_books(book);
             }
             break;
             case 2: {
-                case2_add_book(data_book);
+                case2_add_book(book);
             }
             break;
             case 3:{
-                case3_edit_book(data_book);
+                case3_edit_book(book);
             }
             break;
             case 4:{
-                case4_delete_book(data_book);
+                case4_delete_book(book);
             }
             break;
             case 5:{
-                case5_search_book(data_book);
+                case5_search_book(book);
             }
             break;
             case 6:{
-               case6_search_book(data_book);
+               case6_search_book(book);
             }
             break;
-            case 0:
+            case 0: {
                 std::cout << "Returning to main menu...\n";
-                main_menu(data_reader,data_book,data_transaction);
+                bool i=main_menu(reader,book,transaction);
+            }
             break;
             default: {
                 std::cout << "Invalid choice! Try again.\n";
@@ -101,7 +103,7 @@ void menu_book(char data_reader[100][9][100],char data_book[100][8][100],char da
             }
         }
 }
-void menu_transaction(char data_reader[100][9][100],char data_book[100][8][100],char data_transaction[100][6][100]) {
+void menu_transaction(data_reader reader[],data_book book[],data_transaction transaction[]) {
     clearConsole();
     print_logo();
     std::cout<<"[Transaction]\n"
@@ -113,27 +115,27 @@ void menu_transaction(char data_reader[100][9][100],char data_book[100][8][100],
     std::cin >> choice;
     switch (choice) {
         case 1: {
-            case1_borrow_transaction(data_transaction);
+            case1_borrow_transaction(transaction);
         }
         break;
         case 2: {
-           case2_return_transaction(data_transaction,data_book);
+           case2_return_transaction(transaction,book);
         }
         break;
         case 3: {
-            case3_view_transaction(data_transaction);
+            case3_view_transaction(transaction);
         }
         break;
         case 0: {
             std::cout << "Returning to main menu...\n";
-            main_menu(data_reader,data_book,data_transaction);
+            bool i=main_menu(reader,book,transaction);
         }
         break;
         default:
             std::cout << "Invalid choice! Try again.\n";
     }
 }
-void menu_statistic(char data_reader[100][9][100],char data_book[100][8][100],char data_transaction[100][6][100]) {
+void menu_statistic(data_reader reader[],data_book book[],data_transaction transaction[]) {
     clearConsole();
     print_logo();
     std::cout<<"[Statistic]\n"
@@ -148,32 +150,32 @@ void menu_statistic(char data_reader[100][9][100],char data_book[100][8][100],ch
         std::cin >> choice;
         switch (choice) {
             case 1: {
-              case1_statistic(data_book);
+              case1_statistic(book);
             }
             break;
             case 2: {
-                case2_statistic(data_book);
+                case2_statistic(book);
             }
             break;
             case 3: {
-               case3_statistic(data_reader);
+               case3_statistic(reader);
             }
             break;
             case 4: {
-               case4_statistic(data_reader);
+               case4_statistic(reader);
             }
             break;
             case 5: {
-                case5_statistics(data_transaction);
+                case5_statistics(transaction);
             }
             break;
             case 6: {
-                case6_statistics(data_transaction);
+                case6_statistics(transaction);
             }
             break;
             case 0: {
                 std::cout << "Returning to main menu...\n";
-                main_menu(data_reader,data_book,data_transaction);
+                bool i=main_menu(reader,book,transaction);
             }
             break;
             default:
@@ -181,7 +183,7 @@ void menu_statistic(char data_reader[100][9][100],char data_book[100][8][100],ch
         }
 }
 
-void main_menu(char data_reader[100][9][100],char data_book[100][8][100],char data_transaction[100][6][100]) {
+bool main_menu(data_reader reader[],data_book book[],data_transaction transaction[]) {
     clearConsole();
     print_logo();
     std::cout<<"[Main Menu]\n"
@@ -195,51 +197,54 @@ void main_menu(char data_reader[100][9][100],char data_book[100][8][100],char da
     switch (choice) {
         case 1:
             clearConsole();
-        menu_reader(data_reader,data_book,data_transaction);
+        menu_reader(reader,book,transaction);
         break;
         case 2:
             clearConsole();
-        menu_book(data_reader,data_book,data_transaction);
+        menu_book(reader,book,transaction);
         break;
         case 3:
             clearConsole();
-        menu_transaction(data_reader,data_book,data_transaction);
+        menu_transaction(reader,book,transaction);
         //do something
         break;
         case 4:
             clearConsole();
-        menu_statistic(data_reader,data_book,data_transaction);
+        menu_statistic(reader,book,transaction);
         break;
         case 0:{
         clearConsole();
         std::cout << "Exiting the system...\n";
-        exit(0);
+        return false;
         }
         break;
         default:
             std::cout << "Invalid choice! Try again.\n";
     }
+    return true;
 }
 int main()
 {
-   // system("chcp 65001");
-    setColSizeConsole();
     char file_reader[]="../Data/data_reader.txt";
     char file_book[]="../Data/data_book.txt";
     char file_transaction[]="../Data/data_transaction.txt";
+    char file_reader_output[]="../Output/data_reader_output.txt";
+    char file_book_output[]="../Output/data_book_output.txt";
+    char file_transaction_output[]="../Output/data_transaction_output.txt";
+    setColSizeConsole();
     //get data of reader
-    char data_reader[100][9][100];
-    read_data_reader(file_reader,data_reader);
+    data_reader reader[100];
+    read_data_reader(file_reader,reader);
     // //get data of book
-    char data_book[100][8][100];
-     read_data_book(file_book,data_book);
+    data_book book[100];
+     read_data_book(file_book,book);
     // //get data of transaction
-    char data_transaction[100][6][100];
-     read_data_transaction(file_transaction,data_transaction);
+    data_transaction transaction[100];
+    read_data_transaction(file_transaction,transaction);
 
-    while (true) {
-
-        main_menu(data_reader,data_book,data_transaction);
-    }
+    while (main_menu(reader,book,transaction)) {}
+    write_data_book(file_book_output,book);
+    write_data_transaction(file_transaction_output,transaction);
+    write_data_reader(file_reader_output,reader);
     return 0;
 }

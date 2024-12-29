@@ -70,7 +70,7 @@
 				"role" : "flags"
 			},
 			{
-				"fragment" : "",
+				"fragment" : "-static",
 				"role" : "flags"
 			},
 			{

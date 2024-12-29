@@ -89,6 +89,7 @@ build CMakeFiles/nmlt_library.dir/Function.cpp.obj: CXX_COMPILER__nmlt_library_u
 
 build nmlt_library.exe: CXX_EXECUTABLE_LINKER__nmlt_library_Debug CMakeFiles/nmlt_library.dir/main.cpp.obj CMakeFiles/nmlt_library.dir/Reader.cpp.obj CMakeFiles/nmlt_library.dir/Book.cpp.obj CMakeFiles/nmlt_library.dir/Transaction.cpp.obj CMakeFiles/nmlt_library.dir/Function.cpp.obj
   FLAGS = -g
+  LINK_FLAGS = -static
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\nmlt_library.dir
   POST_BUILD = cd .
